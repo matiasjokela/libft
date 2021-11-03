@@ -1,18 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 11:37:00 by mjokela           #+#    #+#             */
-/*   Updated: 2021/11/03 11:37:04 by mjokela          ###   ########.fr       */
+/*   Created: 2021/11/03 13:54:35 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/03 13:54:39 by mjokela          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef LIBFT_H
+# define LIBFT_H
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+# include <unistd.h>
+
+void	ft_putchar(char c);
+int		ft_strlen(char *str);
+void	ft_putstr(char *str);
+
+#endif
