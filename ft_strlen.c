@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
+long int	ft_strlen(char const *str)
 {
 	int	i;
 

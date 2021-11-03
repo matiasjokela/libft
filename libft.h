@@ -14,9 +14,12 @@
 # define LIBFT_H
 
 # include <unistd.h>
+# include <stdlib.h>
+# include <string.h>
 
-void	ft_putchar(char c);
-int		ft_strlen(char *str);
-void	ft_putstr(char *str);
+void				ft_putchar(char c);
+unsigned long int	ft_strlen(char const *str);
+void				ft_putstr(char const *str);
+char				*ft_strdup(char const *src);
 
 #endif

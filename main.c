@@ -16,8 +16,23 @@
 
 int main (void)
 {
-	// testing ft_putchar and ft_putstr
-	ft_putstr("This is ft_putstr, and this is ft_putchar -> ");
+	// Testing ft_putchar and ft_putstr
+	printf("Testing ft_putchar and ft_putstr");
+	ft_putstr("This is ft_putstr, and this is ft_putchar (should be c) -> ");
 	ft_putchar('c');
 	ft_putchar('\n');
+
+	ft_putchar('\n');
+	// Testing ft_strlen
+	char *s1 = "testi";
+	printf("Testing ft_strlen with \"%s\":\n", s1);
+	printf("Real: %lu, ft_strlen: %lu\n", strlen(s1), ft_strlen(s1));
+
+	ft_putchar('\n');
+	// Testing strdup
+	char *s2 = "jeejee";
+	printf("Testing ft_strdup with \"%s\":\n", s2);
+	printf("Real: %s, ft_strdup: %s\n", strdup(s2), ft_strdup(s2));
+
+
 }

@@ -11,9 +11,9 @@
 # **************************************************************************** #
 
 NAME = libft.a
-SRCS = ft_putchar.c ft_putstr.c ft_strlen.c
+SRCS = *.c
 HEADER = libft.h
-O_FILES = ft_putchar.o ft_putstr.o ft_strlen.o
+O_FILES = *.o
 
 
 all:
