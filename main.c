@@ -12,6 +12,7 @@
 
 #include "libft.h"
 #include <stdio.h>
+#include <ctype.h>
 
 
 int main (void)
@@ -34,5 +35,11 @@ int main (void)
 	printf("Testing ft_strdup with \"%s\":\n", s2);
 	printf("Real: %s, ft_strdup: %s\n", strdup(s2), ft_strdup(s2));
 
+	// Testing ft_isdigit
+
+	int c = 'f';
+
+	printf("Testing ft_isdigit with \"%c\":\n", c);
+	printf("Real: %d, ft_isdigit: %d\n", isdigit(c), ft_isdigit(c));
 
 }
