@@ -35,12 +35,20 @@ int main (void)
 	printf("Testing ft_strdup with \"%s\":\n", s2);
 	printf("Real: %s, ft_strdup: %s\n", strdup(s2), ft_strdup(s2));
 
-	// Testing ft_isdigit
+	// Testing ft_isdigit, ft_isalpha and ft_isalnum
+	int c = 'k';
 
-	int c = 'f';
-
-	printf("Testing ft_isdigit and ft_isalpha with \"%c\":\n", c);
+	printf("Testing ft_isdigit, ft_isalpha and ft_isalnum with \"%c\":\n", c);
 	printf("Real: %d, ft_isdigit: %d\n", isdigit(c), ft_isdigit(c));
-	printf("Real: %d, ft_isalpha: %d\n", isalpha(c), ft_isalpha(c));	
+	printf("Real: %d, ft_isalpha: %d\n", isalpha(c), ft_isalpha(c));
+	printf("Real: %d, ft_isalnum: %d\n", isalnum(c), ft_isalnum(c));
+	ft_putchar('\n');
+
+	// Testing ft_isascii and ft_isprint
+	int c1 = 127;
+
+	printf("Testing ft_isascii and ft_isprint with \"%c\":\n", c1);
+	printf("Real: %d, ft_isascii: %d\n", isascii(c1), ft_isascii(c1));
+	//printf("Real: %d, ft_isprint: %d\n", isprint(c1), ft_isprint(c1));
 
 }
