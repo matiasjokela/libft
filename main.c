@@ -18,37 +18,104 @@
 int main (void)
 {
 	// Testing ft_putchar and ft_putstr
-	printf("Testing ft_putchar and ft_putstr");
+	printf("-------\nTesting ft_putchar and ft_putstr:\n");
 	ft_putstr("This is ft_putstr, and this is ft_putchar (should be c) -> ");
 	ft_putchar('c');
-	ft_putchar('\n');
+	printf("\n\n");
 
-	ft_putchar('\n');
 	// Testing ft_strlen
 	char *s1 = "testi";
 	printf("Testing ft_strlen with \"%s\":\n", s1);
 	printf("Real: %lu, ft_strlen: %lu\n", strlen(s1), ft_strlen(s1));
-
 	ft_putchar('\n');
+
 	// Testing strdup
 	char *s2 = "jeejee";
 	printf("Testing ft_strdup with \"%s\":\n", s2);
 	printf("Real: %s, ft_strdup: %s\n", strdup(s2), ft_strdup(s2));
-
-	// Testing ft_isdigit, ft_isalpha and ft_isalnum
-	int c = 'k';
-
-	printf("Testing ft_isdigit, ft_isalpha and ft_isalnum with \"%c\":\n", c);
-	printf("Real: %d, ft_isdigit: %d\n", isdigit(c), ft_isdigit(c));
-	printf("Real: %d, ft_isalpha: %d\n", isalpha(c), ft_isalpha(c));
-	printf("Real: %d, ft_isalnum: %d\n", isalnum(c), ft_isalnum(c));
 	ft_putchar('\n');
 
-	// Testing ft_isascii and ft_isprint
-	int c1 = 127;
+	// Testing ft_isdigit
+	printf("Testing ft_isdigit:\n");
+	for (int i = 0; i < 128; i++)
+	{
+		if (isdigit(i) != ft_isdigit(i))
+		{
+			printf("INCORRECT\n");
+			printf("char: %c, real: %d, ft_isdigit: %d\n", i, isdigit(i), ft_isdigit(i));
+			break;
+		}
+		if (i == 127)
+		{
+			printf("CORRECT\n");
+		}
+	}
+	ft_putchar('\n');
 
-	printf("Testing ft_isascii and ft_isprint with \"%c\":\n", c1);
-	printf("Real: %d, ft_isascii: %d\n", isascii(c1), ft_isascii(c1));
-	//printf("Real: %d, ft_isprint: %d\n", isprint(c1), ft_isprint(c1));
+	// Testing ft_isalpha
+	printf("Testing ft_isalpha:\n");
+	for (int i = 0; i < 128; i++)
+	{
+		if (isalpha(i) != ft_isalpha(i))
+		{
+			printf("INCORRECT\n");
+			printf("char: %c, real: %d, ft_isalpha: %d\n", i, isalpha(i), ft_isalpha(i));			
+			break;
+		}
+		if (i == 127)
+		{
+			printf("CORRECT\n");
+		}
+	}
+	ft_putchar('\n');
 
+	// Testing ft_isalnum
+	printf("Testing ft_isalnum:\n");
+	for (int i = 0; i < 128; i++)
+	{
+		if (isalnum(i) != ft_isalnum(i))
+		{
+			printf("INCORRECT\n");
+			printf("char: %c, real: %d, ft_isalnum: %d\n", i, isalnum(i), ft_isalnum(i));			
+			break;
+		}
+		if (i == 127)
+		{
+			printf("CORRECT\n");
+		}
+	}
+	ft_putchar('\n');
+
+	// Testing ft_isascii
+	printf("Testing ft_isascii:\n");
+	for (int i = 0; i < 128; i++)
+	{
+		if (isascii(i) != ft_isascii(i))
+		{
+			printf("INCORRECT\n");
+			printf("char: %c, real: %d, ft_isascii: %d\n", i, isascii(i), ft_isascii(i));				
+			break;
+		}
+		if (i == 127)
+		{
+			printf("CORRECT\n");
+		}
+	}
+	ft_putchar('\n');
+
+	// Testing ft_isprint for all ascii characters
+	printf("Testing ft_isprint:\n");
+	for (int i = 0; i < 128; i++)
+	{
+		if (isprint(i) != ft_isprint(i))
+		{
+			printf("INCORRECT\n");
+			printf("char: %c, real: %d, ft_isprint: %d\n", i, isprint(i), ft_isprint(i));			
+			break;
+		}
+		if (i == 127)
+		{
+			printf("CORRECT\n");
+		}
+	}
 }
