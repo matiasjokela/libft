@@ -39,7 +39,8 @@ int main (void)
 
 	int c = 'f';
 
-	printf("Testing ft_isdigit with \"%c\":\n", c);
+	printf("Testing ft_isdigit and ft_isalpha with \"%c\":\n", c);
 	printf("Real: %d, ft_isdigit: %d\n", isdigit(c), ft_isdigit(c));
+	printf("Real: %d, ft_isalpha: %d\n", isalpha(c), ft_isalpha(c));	
 
 }
