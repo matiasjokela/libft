@@ -13,6 +13,7 @@
 #include "libft.h"
 #include <stdio.h>
 #include <ctype.h>
+#include <xlocale.h>
 
 
 int main (void)
@@ -118,4 +119,38 @@ int main (void)
 			printf("CORRECT\n");
 		}
 	}
+	ft_putchar('\n');
+
+	// Testing ft_toupper for all ascii characters	
+	printf("Testing ft_toupper:\n");
+	for (int i = 0; i < 128; i++)
+	{
+		if (toupper(i) != ft_toupper(i))
+		{
+			printf("INCORRECT\n");
+			printf("char: %c, real: %d, ft_isprint: %d\n", i, toupper(i), ft_toupper(i));			
+			break;
+		}
+		if (i == 127)
+		{
+			printf("CORRECT\n");
+		}
+	}
+	ft_putchar('\n');
+
+	// Testing ft_tolower for all ascii characters	
+	printf("Testing ft_tolower:\n");
+	for (int i = 0; i < 128; i++)
+	{
+		if (tolower(i) != ft_tolower(i))
+		{
+			printf("INCORRECT\n");
+			printf("char: %c, real: %d, ft_isprint: %d\n", i, tolower(i), ft_tolower(i));			
+			break;
+		}
+		if (i == 127)
+		{
+			printf("CORRECT\n");
+		}
+	}	
 }
