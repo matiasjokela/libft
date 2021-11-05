@@ -29,5 +29,7 @@ int					ft_isprint(int c);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_atoi(char const *str);
+char				*ft_strcpy(char *dest, char const *src);
+char				*ft_strncpy(char *dest, char const *src, size_t len);
 
 #endif

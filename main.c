@@ -174,6 +174,15 @@ int main (void)
 			printf("CORRECT\n");
 		}
 	}
+	ft_putchar('\n');
 
+	// Testing ft_strcpy
+	printf("Testing ft_strcpy:\n")
+	char const *src1 = "jeejee";
+	char const *src2 = "jeejee";	
+	char *dst1 = "huuhaahuuhaa";
+	char *dst2 = "huuhaahuuhaa";	
+
+	// HUOM ft_strcpy ja ft_strncpy ei vielä testattu!!!
 
 }
