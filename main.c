@@ -152,5 +152,28 @@ int main (void)
 		{
 			printf("CORRECT\n");
 		}
-	}	
+	}
+	ft_putchar('\n');
+
+	// Testing ft_atoi
+	char *strs[20] = {"9223372036854775809", " -42", "abc 45 asd", "+-54 wkm", 
+	" - 6", "00#00", "€545", "#4-4", "-2950000000", "", 
+	"ksldfj95050544546064530334035310510060680550468656", "+ -  2"};
+	int size = 12;
+	printf("Testing ft_atoi:\n");
+	for (int i = 0; i < size; i++)
+	{
+		if (atoi(strs[i]) != ft_atoi(strs[i]))
+		{
+			printf("INCORRECT\n");
+			printf("Input: %s, real: %d, ft_atoi: %d\n", strs[i], atoi(strs[i]), ft_atoi(strs[i]));			
+			break;
+		}
+		if (i == size - 1)
+		{
+			printf("CORRECT\n");
+		}
+	}
+
+
 }
