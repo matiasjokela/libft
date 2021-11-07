@@ -18,22 +18,49 @@
 
 int main (void)
 {
-	// Testing ft_putchar and ft_putstr
-	printf("-------\nTesting ft_putchar and ft_putstr:\n");
-	ft_putstr("This is ft_putstr, and this is ft_putchar (should be c) -> ");
-	ft_putchar('c');
-	printf("\n\n");
+	// Testing ft_putchar
+	printf("-------\nTesting ft_putchar:\n");
+	ft_putstr("\x1B[32m");
+	ft_putchar('O');
+	ft_putchar('K');	
+	printf("\x1B[0m\n\n");
+
+	// Testing ft_putstr
+	ft_putstr("Testing ft_putstr: \n\x1B[32mOK\x1B[0m\n\n");
+	
 
 	// Testing ft_strlen
-	char *s1 = "testi";
-	printf("Testing ft_strlen with \"%s\":\n", s1);
-	printf("Real: %lu, ft_strlen: %lu\n", strlen(s1), ft_strlen(s1));
+	char *strs[20] = {"9223372036854775809", " -42", "abc 45 asd", "+-54 wkm", 
+	" - 6", "00#00", "€545", "#4-4", "-2950000000", "", 
+	"ksldfj95050544546064530334035310510060680550468656", "+ -  2"};
+	int size = 12;
+	printf("Testing ft_strlen:\n");
+	for (int i = 0; i < size; i++)
+	{
+		if (strlen(strs[i]) != ft_strlen(strs[i]))
+		{
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+			printf("Input: %s, real: %lu, ft_strlen: %lu\n", strs[i], strlen(strs[i]), ft_strlen(strs[i]));			
+			break;
+		}
+		if (i == size - 1)
+		{
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+		}
+	}
 	ft_putchar('\n');
 
 	// Testing strdup
 	char *s2 = "jeejee";
-	printf("Testing ft_strdup with \"%s\":\n", s2);
-	printf("Real: %s, ft_strdup: %s\n", strdup(s2), ft_strdup(s2));
+	printf("Testing ft_strdup:\n");
+	if (strcmp(strdup(s2), ft_strdup(s2)) == 0)
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	else
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");		
+		printf("Input: %s, real: %s, ft_atoi: %s\n", s2, strdup(s2), ft_strdup(s2));
+	}
+	
 	ft_putchar('\n');
 
 	// Testing ft_isdigit
@@ -42,13 +69,13 @@ int main (void)
 	{
 		if (isdigit(i) != ft_isdigit(i))
 		{
-			printf("INCORRECT\n");
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
 			printf("char: %c, real: %d, ft_isdigit: %d\n", i, isdigit(i), ft_isdigit(i));
 			break;
 		}
 		if (i == 127)
 		{
-			printf("CORRECT\n");
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 		}
 	}
 	ft_putchar('\n');
@@ -59,13 +86,13 @@ int main (void)
 	{
 		if (isalpha(i) != ft_isalpha(i))
 		{
-			printf("INCORRECT\n");
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
 			printf("char: %c, real: %d, ft_isalpha: %d\n", i, isalpha(i), ft_isalpha(i));			
 			break;
 		}
 		if (i == 127)
 		{
-			printf("CORRECT\n");
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 		}
 	}
 	ft_putchar('\n');
@@ -76,13 +103,13 @@ int main (void)
 	{
 		if (isalnum(i) != ft_isalnum(i))
 		{
-			printf("INCORRECT\n");
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
 			printf("char: %c, real: %d, ft_isalnum: %d\n", i, isalnum(i), ft_isalnum(i));			
 			break;
 		}
 		if (i == 127)
 		{
-			printf("CORRECT\n");
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 		}
 	}
 	ft_putchar('\n');
@@ -93,13 +120,13 @@ int main (void)
 	{
 		if (isascii(i) != ft_isascii(i))
 		{
-			printf("INCORRECT\n");
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
 			printf("char: %c, real: %d, ft_isascii: %d\n", i, isascii(i), ft_isascii(i));				
 			break;
 		}
 		if (i == 127)
 		{
-			printf("CORRECT\n");
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 		}
 	}
 	ft_putchar('\n');
@@ -110,13 +137,13 @@ int main (void)
 	{
 		if (isprint(i) != ft_isprint(i))
 		{
-			printf("INCORRECT\n");
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
 			printf("char: %c, real: %d, ft_isprint: %d\n", i, isprint(i), ft_isprint(i));			
 			break;
 		}
 		if (i == 127)
 		{
-			printf("CORRECT\n");
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 		}
 	}
 	ft_putchar('\n');
@@ -127,13 +154,13 @@ int main (void)
 	{
 		if (toupper(i) != ft_toupper(i))
 		{
-			printf("INCORRECT\n");
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
 			printf("char: %c, real: %d, ft_isprint: %d\n", i, toupper(i), ft_toupper(i));			
 			break;
 		}
 		if (i == 127)
 		{
-			printf("CORRECT\n");
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 		}
 	}
 	ft_putchar('\n');
@@ -144,44 +171,108 @@ int main (void)
 	{
 		if (tolower(i) != ft_tolower(i))
 		{
-			printf("INCORRECT\n");
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
 			printf("char: %c, real: %d, ft_isprint: %d\n", i, tolower(i), ft_tolower(i));			
 			break;
 		}
 		if (i == 127)
 		{
-			printf("CORRECT\n");
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 		}
 	}
 	ft_putchar('\n');
 
 	// Testing ft_atoi
-	char *strs[20] = {"9223372036854775809", " -42", "abc 45 asd", "+-54 wkm", 
+	char *strs1[20] = {"9223372036854775809", " -42", "abc 45 asd", "+-54 wkm", 
 	" - 6", "00#00", "€545", "#4-4", "-2950000000", "", 
 	"ksldfj95050544546064530334035310510060680550468656", "+ -  2"};
-	int size = 12;
+	int size1 = 12;
 	printf("Testing ft_atoi:\n");
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < size1; i++)
 	{
-		if (atoi(strs[i]) != ft_atoi(strs[i]))
+		if (atoi(strs1[i]) != ft_atoi(strs1[i]))
 		{
-			printf("INCORRECT\n");
-			printf("Input: %s, real: %d, ft_atoi: %d\n", strs[i], atoi(strs[i]), ft_atoi(strs[i]));			
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+			printf("Input: %s, real: %d, ft_atoi: %d\n", strs1[i], atoi(strs1[i]), ft_atoi(strs1[i]));			
 			break;
 		}
-		if (i == size - 1)
+		if (i == size1 - 1)
 		{
-			printf("CORRECT\n");
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 		}
 	}
 	ft_putchar('\n');
 
+	// Testing ft_strcmp
+	char const *cmp1 = "ökljäa&&wieuqo88798";
+	char *strs2[20] = {"9223372036854775809", " klja&&wieuqo88798", "abc 45 asd", "+-54 wkm", 
+	" - 6", "äklja&&wieuqo88798", "€545", "klja&&wieuqo88798sd", "-2950000000", "", 
+	"ksldfj95050544546064530334035310510060680550468656", "+ -  2"};
+	int size2 = 12;	
+	printf("Testing ft_strcmp:\n");
+	for (int i = 0; i < size2; i++)
+	{
+		if (strcmp(cmp1, strs2[i]) != ft_strcmp(cmp1, strs2[i]))
+		{
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+			printf("Input: %s vs. %s, real: %d, ft_strcmp: %d\n", cmp1, strs2[i], strcmp(cmp1, strs2[i]), ft_strcmp(cmp1, strs2[i]));			
+			break;
+		}
+		if (i == size2 - 1)
+		{
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+		}
+	}
+	ft_putchar('\n');
+
+	size_t n = 6;
+	printf("Testing ft_strncmp:\n");
+	for (int i = 0; i < size2; i++)
+	{
+		if (strncmp(cmp1, strs2[i], n) != ft_strncmp(cmp1, strs2[i], n))
+		{
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+			printf("Input: %s vs. %s, real: %d, ft_strcmp: %d\n", cmp1, strs2[i], strncmp(cmp1, strs2[i], n), ft_strncmp(cmp1, strs2[i], n));			
+			break;
+		}
+		if (i == size2 - 1)
+		{
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+		}
+	}
+	ft_putchar('\n');	
+
+
 	// Testing ft_strcpy
-	printf("Testing ft_strcpy:\n")
-	char const *src1 = "jeejee";
-	char const *src2 = "jeejee";	
-	char *dst1 = "huuhaahuuhaa";
-	char *dst2 = "huuhaahuuhaa";	
+	printf("Testing ft_strcpy:\n");
+	//size_t len1 = 2;
+	//size_t len2 = 19;	
+	char const src1[200] = "ökljäa&&wieuqo88798";
+	char strs3[20][200] = {"9223372036854775809", " klja&&wieuqo88798", "abc 45 asd", "+-54 wkm", 
+	" - 6", "äklja&&wieuqo88798", "€545", "klja&&wieuqo88798sd", "-2950000000", "", 
+	"ksldfj95050544546064530334035310510060680550468656", "+ -  2"};
+	char *strs4[20] = {"9223372036854775809", " klja&&wieuqo88798", "abc 45 asd", "+-54 wkm", 
+	" - 6", "äklja&&wieuqo88798", "€545", "klja&&wieuqo88798sd", "-2950000000", "", 
+	"ksldfj95050544546064530334035310510060680550468656", "+ -  2"};
+	int size3 = 12;
+
+	for (int i = 0; i < size3; i++)
+	{
+		if (strcpy(strs3[i], src1) != ft_strcpy(strs4[i], src1))
+		{
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+			printf("src: %sdest: %s, real: %s, ft_strcpy: %s\n", src1, strs3[i], strcpy(strs3[i], src1), ft_strcpy(strs4[i], src1));			
+			break;
+		}
+		if (i == size2 - 1)
+		{
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+		}
+	}
+
+
+
+
 
 	// HUOM ft_strcpy ja ft_strncpy ei vielä testattu!!!
 

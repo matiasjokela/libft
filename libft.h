@@ -31,5 +31,7 @@ int					ft_tolower(int c);
 int					ft_atoi(char const *str);
 char				*ft_strcpy(char *dest, char const *src);
 char				*ft_strncpy(char *dest, char const *src, size_t len);
+int					ft_strcmp(char const *s1, char const *s2);
+int					ft_strncmp(char const *s1, char const *s2, size_t n);
 
 #endif
