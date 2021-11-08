@@ -300,15 +300,15 @@ int main (void)
 	char target[200] = "jeejee";
 	char target1[200] = "jeejee";
 
-	if (ft_strcmp(memset(target, -905, 5), ft_memset(target1, -905, 5)) != 0)
+	if (ft_strcmp((char *)memset(target, -905, 5), (char *)ft_memset(target1, -905, 5)) != 0)
 	{
 		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
-		printf("memset: %s, ft_memset: %s\n", memset(target, -905, 5), ft_memset(target1, -905, 5));
+		printf("memset: %s, ft_memset: %s\n", (char *)memset(target, -905, 5), (char *)ft_memset(target1, -905, 5));
 	}
-	else if (ft_strcmp(memset(target, 55, 25), ft_memset(target1, 55, 25)) != 0)
+	else if (ft_strcmp((char *)memset(target, 55, 25), ft_memset(target1, 55, 25)) != 0)
 	{
 		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
-		printf("memset: %s, ft_memset: %s\n", memset(target, 55, 25), ft_memset(target1, 55, 25));
+		printf("memset: %s, ft_memset: %s\n", (char *)memset(target, 55, 25), (char *)ft_memset(target1, 55, 25));
 	}
 	else
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
@@ -341,6 +341,6 @@ int main (void)
 	printf("%s, %s\n", jee, jee2);
 	printf("%s, %s\n", jee1, jee2);	
 	memcpy(jee, jee2, 4);
-	ft_memcpy(jee, jee2, 4);	
+	ft_memcpy(jee1, jee2, 4);	
 	printf("%s, %s\n", jee, jee1);	
 }
