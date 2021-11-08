@@ -316,21 +316,6 @@ int main (void)
 
 
 	printf("\nTesting ft_bzero:\n");
-	/*char target2[200] = "jeejee";
-	char target3[200] = "jeejee";
-
-	if (ft_strcmp(bzero(target2, 5), ft_memset(target1, -905, 5)) != 0)
-	{
-		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
-		printf("memset: %s, ft_memset: %s\n", memset(target, -905, 5), ft_memset(target1, -905, 5));
-	}
-	else if (ft_strcmp(memset(target, 55, 25), ft_memset(target1, 55, 25)) != 0)
-	{
-		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
-		printf("memset: %s, ft_memset: %s\n", memset(target, 55, 25), ft_memset(target1, 55, 25));
-	}
-	else
-		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");		*/	
 
 	int size4 = 200;
 	bzero(target, 5);
@@ -349,4 +334,13 @@ int main (void)
 		}
 	}
 
+	char jee[50] = "jeejee";
+	char jee1[50] = "jeejee";
+	char jee2[50] = "hello, world";	
+
+	printf("%s, %s\n", jee, jee2);
+	printf("%s, %s\n", jee1, jee2);	
+	memcpy(jee, jee2, 4);
+	ft_memcpy(jee, jee2, 4);	
+	printf("%s, %s\n", jee, jee1);	
 }
