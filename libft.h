@@ -33,5 +33,7 @@ char				*ft_strcpy(char *dest, char const *src);
 char				*ft_strncpy(char *dest, char const *src, size_t len);
 int					ft_strcmp(char const *s1, char const *s2);
 int					ft_strncmp(char const *s1, char const *s2, size_t n);
+void				*ft_memset(void *b, int c, size_t len);
+void				ft_bzero(void *s, size_t n);
 
 #endif

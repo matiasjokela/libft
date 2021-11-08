@@ -245,23 +245,22 @@ int main (void)
 
 	// Testing ft_strcpy
 	printf("Testing ft_strcpy:\n");
-	//size_t len1 = 2;
-	//size_t len2 = 19;	
-	char const src1[200] = "ökljäa&&wieuqo88798";
-	char strs3[20][200] = {"9223372036854775809", " klja&&wieuqo88798", "abc 45 asd", "+-54 wkm", 
+	size_t len1 = 10;
+	char const *src1 = "ökljäa&&wieuqo88798";
+	char strs3[200][200] = {"9223372036854775809", " klja&&wieuqo88798", "abc 45 asd", "+-54 wkm", 
 	" - 6", "äklja&&wieuqo88798", "€545", "klja&&wieuqo88798sd", "-2950000000", "", 
 	"ksldfj95050544546064530334035310510060680550468656", "+ -  2"};
-	char *strs4[20] = {"9223372036854775809", " klja&&wieuqo88798", "abc 45 asd", "+-54 wkm", 
+	char strs4[200][200] = {"9223372036854775809", " klja&&wieuqo88798", "abc 45 asd", "+-54 wkm", 
 	" - 6", "äklja&&wieuqo88798", "€545", "klja&&wieuqo88798sd", "-2950000000", "", 
 	"ksldfj95050544546064530334035310510060680550468656", "+ -  2"};
 	int size3 = 12;
 
 	for (int i = 0; i < size3; i++)
 	{
-		if (strcpy(strs3[i], src1) != ft_strcpy(strs4[i], src1))
+		if (ft_strcmp(strcpy(strs3[i], src1),ft_strcpy(strs4[i], src1)) != 0)
 		{
 			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
-			printf("src: %sdest: %s, real: %s, ft_strcpy: %s\n", src1, strs3[i], strcpy(strs3[i], src1), ft_strcpy(strs4[i], src1));			
+			printf("index: %d, real: %s, ft_strcpy: %s\n", i, strcpy(strs3[i], src1), ft_strcpy(strs4[i], src1));			
 			break;
 		}
 		if (i == size2 - 1)
@@ -269,11 +268,85 @@ int main (void)
 			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 		}
 	}
+	ft_putchar('\n');	
+
+
+	// Testing ft_strncpy
+	printf("Testing ft_strncpy:\n");
+	char strs5[200][200] = {"9223372036854775809", " klja&&wieuqo88798", "abc 45 asd", "+-54 wkm", 
+	" - 6", "äklja&&wieuqo88798", "€545", "klja&&wieuqo88798sd", "-2950000000", "", 
+	"ksldfj95050544546064530334035310510060680550468656", "+ -  2"};
+	char strs6[200][200] = {"9223372036854775809", " klja&&wieuqo88798", "abc 45 asd", "+-54 wkm", 
+	" - 6", "äklja&&wieuqo88798", "€545", "klja&&wieuqo88798sd", "-2950000000", "", 
+	"ksldfj95050544546064530334035310510060680550468656", "+ -  2"};
+
+	for (int i = 0; i < size3; i++)
+	{
+		if (ft_strcmp(strncpy(strs5[i], src1, len1),ft_strncpy(strs6[i], src1, len1)) != 0)
+		{
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+			printf("index: %d, real: %s, ft_strcpy: %s\n", i, strncpy(strs5[i], src1, len1), ft_strncpy(strs6[i], src1, len1));			
+			break;
+		}
+		if (i == size2 - 1)
+		{
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+		}
+	}
+	ft_putchar('\n');
+
+	// Testing ft_memset
+	printf("Testing ft_memset:\n");
+	char target[200] = "jeejee";
+	char target1[200] = "jeejee";
+
+	if (ft_strcmp(memset(target, -905, 5), ft_memset(target1, -905, 5)) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("memset: %s, ft_memset: %s\n", memset(target, -905, 5), ft_memset(target1, -905, 5));
+	}
+	else if (ft_strcmp(memset(target, 55, 25), ft_memset(target1, 55, 25)) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("memset: %s, ft_memset: %s\n", memset(target, 55, 25), ft_memset(target1, 55, 25));
+	}
+	else
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 
 
 
+	printf("\nTesting ft_bzero:\n");
+	/*char target2[200] = "jeejee";
+	char target3[200] = "jeejee";
 
+	if (ft_strcmp(bzero(target2, 5), ft_memset(target1, -905, 5)) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("memset: %s, ft_memset: %s\n", memset(target, -905, 5), ft_memset(target1, -905, 5));
+	}
+	else if (ft_strcmp(memset(target, 55, 25), ft_memset(target1, 55, 25)) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("memset: %s, ft_memset: %s\n", memset(target, 55, 25), ft_memset(target1, 55, 25));
+	}
+	else
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");		*/	
 
-	// HUOM ft_strcpy ja ft_strncpy ei vielä testattu!!!
+	int size4 = 200;
+	bzero(target, 5);
+	ft_bzero(target1, 5);
+	for (int i = 0; i < size4; i++)
+	{
+		if (target[i] != target1[i])
+		{
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+			printf("index: %d, bzero: %d, ft_bzero %d\n", i, target[i], target1[i]);
+			break;
+		}
+		if (i == size4 - 1)
+		{
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");			
+		}
+	}
 
 }
