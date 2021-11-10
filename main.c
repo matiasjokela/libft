@@ -116,7 +116,7 @@ int main (void)
 
 	// Testing ft_isascii
 	printf("Testing ft_isascii:\n");
-	for (int i = 0; i < 128; i++)
+	for (int i = 0; i < 150; i++)
 	{
 		if (isascii(i) != ft_isascii(i))
 		{
@@ -124,7 +124,7 @@ int main (void)
 			printf("char: %c, real: %d, ft_isascii: %d\n", i, isascii(i), ft_isascii(i));				
 			break;
 		}
-		if (i == 127)
+		if (i == 149)
 		{
 			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 		}
@@ -343,10 +343,12 @@ int main (void)
 
 	if (ft_strcmp((char *)memcpy(jee, jee2, 4), (char *)ft_memcpy(jee1, jee2, 4)) != 0)
 	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
 		printf("memcpy: %s, ft_memcpy %s\n", (char *)memcpy(jee, jee2, 4), (char *)ft_memcpy(jee1, jee2, 4));
 	}
 	else if (ft_strcmp((char *)memcpy(jee3, jee2, 20), (char *)ft_memcpy(jee4, jee2, 20)) != 0)
 	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
 		printf("memcpy: %s, ft_memcpy %s\n", (char *)memcpy(jee3, jee2, 20), (char *)ft_memcpy(jee4, jee2, 20));
 	}
 	else
@@ -368,7 +370,7 @@ int main (void)
 
 
 	//Testing ft_memmove
-	printf("\n\nTesting ft_memmove:\n");
+	printf("\nTesting ft_memmove:\n");
 	char const src4[50] = "Lorem Ipsum; jeejee";
 	
 	char dest4[50] = "Hello world!, it will be a great day";
@@ -392,6 +394,52 @@ int main (void)
 	printf("%p, %s\n", &temp, temp);
 	printf("%p, %s\n", &st, st);
 	printf("%p, %s\n", &st1, st1);*/
+
+
+
+	//Testing ft_memchr
+	printf("\nTesting ft_memchr:\n");
+	char *str5 = "lkjdsalj9d8uajksdkdkash";
+
+	if (memchr(str5, '9', 200) != ft_memchr(str5, '9', 200))
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Real: %p, ft_memchr: %p\n", memchr(str5, '9', 200), ft_memchr(str5, '9', 200));	
+	}
+	else if (memchr(str5, ':', 200) != ft_memchr(str5, ':', 200))
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Real: %p, ft_memchr: %p\n", memchr(str5, ':', 200), ft_memchr(str5, ':', 200));			
+	}
+	else if (memchr(str5, 'a', 21) != ft_memchr(str5, 'a', 21))
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Real: %p, ft_memchr: %p\n", memchr(str5, 'a', 21), ft_memchr(str5, 'a', 21));					
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
+
+
+	//Testing ft_memchr
+	printf("\nTesting ft_memcmp:\n");
+	const char s4[] = "atoms\0\0\0\0";  
+	const char s5[] = "atoms\0abc";     
+
+	for (int i = 0; i < 9; i++)
+	{
+		if (memcmp(s4, s5, i) != ft_memcmp(s4, s5, i))
+		{
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+			printf("index: %d, Real: %d, ft_memchr: %d\n", i, memcmp(s4, s5, i), ft_memcmp(s4, s5, i));
+			break ;
+		}
+		if (i == 8)
+		{
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+		}
+	}
 
 
 }
