@@ -441,5 +441,41 @@ int main (void)
 		}
 	}
 
+	//Testing ft_strcat
+	printf("\nTesting ft_strcat:\n");
+	char s6[50] = "Hello, ";
+	char s7[50] = "Hello, ";
+	char const s8[50] = "world!";
+	char *s9 = strcat(s6, s8);
+	char *s10 = ft_strcat(s7, s8);
+
+	if (ft_strcmp(s9, s10) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Real %s, ft_strcat: %s\n", s9, s10);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
+
+	//Testing ft_strncat
+	printf("\nTesting ft_strncat:\n");
+	char s11[50] = "Hello, ";
+	char s12[50] = "Hello, ";
+	char const s13[50] = "world!";
+	char *s14 = strncat(s11, s13, 2);
+	char *s15 = ft_strncat(s12, s13, 2);
+
+
+	if (ft_strcmp(s14, s15) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Real %s, ft_strcat: %s\n", s14, s15);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
 
 }
