@@ -354,4 +354,44 @@ int main (void)
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 	}
 
+	//Testing ft_memcpy
+	printf("\nTesting ft_memcpy:\n");
+	char const source[50] = "Lorem Ipsum; jeejee";
+	char destination1[50] = "Hello world!, it will be a great day";
+	char const source2[50] = "Hello world!, it will be a great day";
+	int c = ';';
+
+
+	printf("Real:\nAddress: %p, String: %s\n", memccpy(destination1, source, c, 49), destination1);
+	ft_strcpy(destination1, source2);
+	printf("ft_memccpy:\nAddress: %p, String: %s\n", memccpy(destination1, source, c, 49), destination1);
+
+
+	//Testing ft_memmove
+	printf("\n\nTesting ft_memmove:\n");
+	char const src4[50] = "Lorem Ipsum; jeejee";
+	
+	char dest4[50] = "Hello world!, it will be a great day";
+	char const src5[50] = "Hello world!, it will be a great day";
+
+	
+	printf("Real:\nAddress: %p, String: %s\n", memmove(dest4, src4, 49), dest4);
+	ft_strcpy(dest4, src5);
+	printf("ft_memmove:\nAddress: %p, String: %s\n", ft_memmove(dest4, src4, 49), dest4);
+
+	/*char temp[6] = "00000";
+	char st[6] = "abcde";
+	char *st1 = memcpy(temp, st, 3);
+
+	printf("%p, %s\n", &temp, temp);
+	printf("%p, %s\n", &st, st);
+	printf("%p, %s\n", &st1, st1);			//Miksei muistin ylikirjoittaminen toimi?
+
+	memccpy(st, st1, 'c', 3);
+
+	printf("%p, %s\n", &temp, temp);
+	printf("%p, %s\n", &st, st);
+	printf("%p, %s\n", &st1, st1);*/
+
+
 }
