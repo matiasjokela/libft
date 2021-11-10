@@ -334,13 +334,24 @@ int main (void)
 		}
 	}
 
+	printf("\nTesting ft_memcpy:\n");
 	char jee[50] = "jeejee";
 	char jee1[50] = "jeejee";
-	char jee2[50] = "hello, world";	
+	char const jee2[50] = "hello, world";
+	char jee3[50] = "jeejeejerrycotton";
+	char jee4[50] = "jeejeejerrycotton";
 
-	printf("%s, %s\n", jee, jee2);
-	printf("%s, %s\n", jee1, jee2);	
-	memcpy(jee, jee2, 4);
-	ft_memcpy(jee1, jee2, 4);	
-	printf("%s, %s\n", jee, jee1);	
+	if (ft_strcmp((char *)memcpy(jee, jee2, 4), (char *)ft_memcpy(jee1, jee2, 4)) != 0)
+	{
+		printf("memcpy: %s, ft_memcpy %s\n", (char *)memcpy(jee, jee2, 4), (char *)ft_memcpy(jee1, jee2, 4));
+	}
+	else if (ft_strcmp((char *)memcpy(jee3, jee2, 20), (char *)ft_memcpy(jee4, jee2, 20)) != 0)
+	{
+		printf("memcpy: %s, ft_memcpy %s\n", (char *)memcpy(jee3, jee2, 20), (char *)ft_memcpy(jee4, jee2, 20));
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
+
 }
