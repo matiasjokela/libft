@@ -21,6 +21,7 @@ all:
 	ar rc $(NAME) $(O_FILES);
 	ranlib $(NAME);
 	gcc main.c -L. -lft;
+	rm -f $(O_FILES)  *.gch;
 
 clean:
 	rm -f $(O_FILES)  *.gch;

@@ -478,4 +478,34 @@ int main (void)
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 	}
 
+	//Testing ft_strlcat
+	printf("\nTesting ft_strlcat:\n");
+	char s16[10] = "Hello, ";
+	char s17[10] = "Hello, ";
+	char s18[50] = "Hello, ";
+	char s19[50] = "Hello, ";	
+	size_t tlcat = strlcat(s16, s13, 10);
+	size_t ft_tlcat = ft_strlcat(s17, s13, 10);
+	size_t tlcat2 = strlcat(s18, s13, 50);
+	size_t ft_tlcat2 = ft_strlcat(s19, s13, 50);
+
+	if ((ft_strcmp(s16, s17) != 0) || tlcat != ft_tlcat)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Real %s, %zu\n", s16, tlcat);
+		printf("ft_strlcat %s, %zu\n", s17, ft_tlcat);		
+	}
+	else if ((ft_strcmp(s18, s19) != 0) || tlcat2 != ft_tlcat2)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("real: %s\nft_strlcat: %s\n", s18, s19);
+		printf("real: %zu\nft_strlcat: %zu\n", tlcat2, ft_tlcat2);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
+
+	
+
 }
