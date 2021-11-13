@@ -483,7 +483,7 @@ int main (void)
 	char s16[10] = "Hello, ";
 	char s17[10] = "Hello, ";
 	char s18[50] = "Hello, ";
-	char s19[50] = "Hello, ";	
+	char s19[50] = "Hello, ";
 	size_t tlcat = strlcat(s16, s13, 10);
 	size_t ft_tlcat = ft_strlcat(s17, s13, 10);
 	size_t tlcat2 = strlcat(s18, s13, 50);
@@ -506,6 +506,125 @@ int main (void)
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 	}
 
-	
+	//Testing ft_strchr
+	printf("\nTesting ft_strchr:\n");
+	char const s20[50] = "The answer to life, the universe, and everything";
+
+	char *tst = strchr(s20, 'e');
+	char *tst1 = ft_strchr(s20, 'e');
+	char *tst2 = strchr(s20, '\0');
+	char *tst3 = ft_strchr(s20, '\0');
+	char *tst4 = strchr(s20, 'z');
+	char *tst5 = ft_strchr(s20, 'z');
+
+	if ((ft_strcmp(tst, tst1) != 0) || tst != tst1)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Input char: 'e', real: %p, ft_strchr: %p\n", tst, tst1);
+	}
+	else if ((ft_strcmp(tst2, tst3) != 0) || tst2 != tst3)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Input char: '\\0', real: %p, ft_strchr: %p\n", tst2, tst3);
+	}
+	else if (tst4 != tst5)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Input char: 'z', real: %p, ft_strchr: %p\n", tst4, tst5);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}	
+
+
+	//Testing ft_strrchr
+	printf("\nTesting ft_strrchr:\n");
+
+	char *tst6 = strrchr(s20, 'e');
+	char *tst7 = ft_strrchr(s20, 'e');
+	char *tst8 = strrchr(s20, '\0');
+	char *tst9 = ft_strrchr(s20, '\0');
+	char *tst10 = strrchr(s20, 'z');
+	char *tst11 = ft_strrchr(s20, 'z');
+
+	if ((ft_strcmp(tst6, tst7) != 0) || tst6 != tst7)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Input char: 'e', real: %p, ft_strchr: %p\n", tst6, tst7);
+	}
+	else if ((ft_strcmp(tst8, tst9) != 0) || tst8 != tst9)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Input char: '\\0', real: %p, ft_strchr: %p\n", tst8, tst9);
+	}
+	else if (tst10 != tst11)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Input char: 'z', real: %p, ft_strchr: %p\n", tst10, tst11);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}	
+
+	//Testing ft_strstr
+	printf("\nTesting ft_strstr\n");
+
+	char const *hay = "The answer to life, the universe, and everything";
+	char const *needle = "";
+	char const *needle1 = "answer";
+	char const *needle2 = "42";
+
+	if (strstr(hay, needle) != ft_strstr(hay, needle))
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Needle: %s, real: %p, ft_strstr: %p", needle, strstr(hay, needle), ft_strstr(hay, needle));
+	}
+	else if (strstr(hay, needle1) != ft_strstr(hay, needle1))
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Needle: %s, real: %p, ft_strstr: %p", needle1, strstr(hay, needle1), ft_strstr(hay, needle1));
+	}
+	else if (strstr(hay, needle2) != ft_strstr(hay, needle2))
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Needle: %s, real: %p, ft_strstr: %p", needle2, strstr(hay, needle2), ft_strstr(hay, needle2));
+	}		
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}	
+
+	//Testing ft_strnstr
+	printf("\nTesting ft_strnstr\n");
+
+	if (strnstr(hay, needle, 15) != ft_strnstr(hay, needle, 15))
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Needle: %s, len: 15, real: %p, ft_strstr: %p", needle, strnstr(hay, needle, 15), ft_strnstr(hay, needle, 15));
+	}
+	else if (strnstr(hay, needle1, 10) != ft_strnstr(hay, needle1, 10))
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Needle: %s, len: 10, real: %p, ft_strstr: %p", needle, strnstr(hay, needle1, 10), ft_strnstr(hay, needle1, 10));
+	}
+	else if (strnstr(hay, needle1, 9) != ft_strnstr(hay, needle1, 9))
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Needle: %s, len: 9, real: %p, ft_strstr: %p", needle, strnstr(hay, needle1, 9), ft_strnstr(hay, needle1, 9));
+	}
+	else if (strnstr(hay, needle2, 60) != ft_strnstr(hay, needle2, 60))
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Needle: %s, len: 60, real: %p, ft_strstr: %p", needle2, strnstr(hay, needle2, 60), ft_strnstr(hay, needle2, 60));
+	}		
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}	
+
+
+
 
 }
