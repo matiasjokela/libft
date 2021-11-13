@@ -363,12 +363,25 @@ int main (void)
 	char const source2[50] = "Hello world!, it will be a great day";
 	int c = ';';
 
-
-	printf("Real:\nAddress: %p, String: %s\n", memccpy(destination1, source, c, 49), destination1);
+	char *mem = memccpy(destination1, source, c, 49);
 	ft_strcpy(destination1, source2);
-	printf("ft_memccpy:\nAddress: %p, String: %s\n", memccpy(destination1, source, c, 49), destination1);
+	char *ft_mem = ft_memccpy(destination1, source, c, 49);
 
 
+	if (ft_mem != mem)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("real: %p, ft_memcpy: %p\n", mem, ft_mem);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
+
+
+
+
+	
 	//Testing ft_memmove
 	printf("\nTesting ft_memmove:\n");
 	char const src4[50] = "Lorem Ipsum; jeejee";
@@ -376,27 +389,22 @@ int main (void)
 	char dest4[50] = "Hello world!, it will be a great day";
 	char const src5[50] = "Hello world!, it will be a great day";
 
-	
-	printf("Real:\nAddress: %p, String: %s\n", memmove(dest4, src4, 49), dest4);
+	char *memm = memmove(dest4, src4, 49);
 	ft_strcpy(dest4, src5);
-	printf("ft_memmove:\nAddress: %p, String: %s\n", ft_memmove(dest4, src4, 49), dest4);
-
-	/*char temp[6] = "00000";
-	char st[6] = "abcde";
-	char *st1 = memcpy(temp, st, 3);
-
-	printf("%p, %s\n", &temp, temp);
-	printf("%p, %s\n", &st, st);
-	printf("%p, %s\n", &st1, st1);			//Miksei muistin ylikirjoittaminen toimi?
-
-	memccpy(st, st1, 'c', 3);
-
-	printf("%p, %s\n", &temp, temp);
-	printf("%p, %s\n", &st, st);
-	printf("%p, %s\n", &st1, st1);*/
+	char *ft_memm = ft_memmove(dest4, src4, 49);
 
 
-
+	if (ft_memm != memm)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("real: %p, ft_memcpy: %p\n", memm, ft_memm);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
+	
+	
 	//Testing ft_memchr
 	printf("\nTesting ft_memchr:\n");
 	char *str5 = "lkjdsalj9d8uajksdkdkash";
@@ -622,7 +630,17 @@ int main (void)
 	else
 	{
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
-	}	
+	}
+
+	// Testing ft_memalloc
+	printf("\nTesting ft_memalloc\n");
+
+	char *char_arr = ft_memalloc(15);
+
+	for (int i = 0; i < 16; i++)
+	{
+		printf("%p, %c\n", &char_arr[i], (char)char_arr[i]);
+	}
 
 
 
