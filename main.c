@@ -15,7 +15,10 @@
 #include <ctype.h>
 #include <xlocale.h>
 
-void plus_one(char *str);
+void uppercase(char *str);
+void uppercase_even(unsigned int i, char *str);
+char toupper_char(char c);
+char toupper_char_even(unsigned int i, char c);
 
 int main (void)
 {
@@ -760,31 +763,122 @@ int main (void)
 	printf("\nTesting ft_striter\n");
 
 	char tst16[] = "abcd";
-	char tst17[] = "bcde";
+	char tst17[] = "ABCD";
 
 	char *tst18 = NULL;
 
+	void (*f)(char *) = uppercase;
 
-	ft_striter(tst16, &plus_one);
-	ft_striter(tst18, &plus_one);
+	ft_striter(tst16, f);
+	ft_striter(tst18, uppercase);
 
-	if (strcmp(tst16, tst17) != 0)
+	if (ft_strcmp(tst16, tst17) != 0)
 	{
 		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
-		printf("String %s and %s ddon't match\n", tst16, tst17);
+		printf("Strings %s and %s don't match\n", tst16, tst17);
 	}
 	else
 	{
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 	}
 
+	// Testing ft_striter
+	printf("\nTesting ft_striteri\n");
+
+	char tst19[] = "abcd";
+	char tst20[] = "AbCd";
+
+	char *tst21 = NULL;	
+
+	void (*fi)(unsigned int, char *) = uppercase_even;
+
+	ft_striteri(tst19, fi);
+	ft_striteri(tst21, uppercase_even);
+
+	if (ft_strcmp(tst19, tst20) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Strings %s and %s don't match\n", tst19, tst20);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
+
+	// Testing ft_strmap
+	printf("\nTesting ft_strmap\n");
+
+	char *tst22 = "abcd";
+	char *tst23 = "ABCD";
+
+	char *tst24 = NULL;
+
+	char *tst25 = ft_strmap(tst22, toupper_char);
+	char *tst26 = ft_strmap(tst24, toupper_char);
+
+	(void) tst26;
 
 
+	if (ft_strcmp(tst23, tst25) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Strings %s and %s don't match\n", tst23, tst25);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
 
+	// Testing ft_strmapi
+	printf("\nTesting ft_strmapi\n");
+
+	char *tst27 = "abcd";
+	char *tst28 = "AbCd";
+
+	char *tst29 = NULL;
+
+	char *tst30 = ft_strmapi(tst27, toupper_char_even);
+	char *tst31 = ft_strmapi(tst29, toupper_char_even);
+
+	(void) tst31;
+
+
+	if (ft_strcmp(tst28, tst30) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Strings %s and %s don't match\n", tst28, tst30);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}		
 
 }
 
-void plus_one(char *str)
+
+
+
+void uppercase(char *str)
 {
-	str[0]++;
+	str[0] = ft_toupper(str[0]);
+}
+
+void uppercase_even(unsigned int i, char *str)
+{
+	if (i % 2 == 0)
+		str[0] = ft_toupper(str[0]);
+}
+
+char	toupper_char(char c)
+{
+	if (c >= 'a' && c <= 'z')
+		c -= 'a' - 'A';
+	return (c);
+}
+
+char	toupper_char_even(unsigned int i, char c)
+{
+	if (c >= 'a' && c <= 'z' && i % 2 == 0)
+		c -= 'a' - 'A';
+	return (c);
 }
