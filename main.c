@@ -225,6 +225,12 @@ int main (void)
 	printf("Testing ft_strncmp:\n");
 	for (int i = 0; i < size2; i++)
 	{
+		if (i == 0 && (strncmp("jeejeejee", "jeejee", 6) != ft_strncmp("jeejeejee", "jeejee", 6)))
+		{
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+			printf("Input: (\"jeejeejee\", \"jeejee\", 6), real %d, ft_strncmp %d\n", strncmp("jeejeejee", "jeejee", 6), ft_strncmp("jeejeejee", "jeejee", 6));
+			break ;			
+		}
 		if (strncmp(cmp1, strs2[i], n) != ft_strncmp(cmp1, strs2[i], n))
 		{
 			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
@@ -851,7 +857,48 @@ int main (void)
 	else
 	{
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
-	}		
+	}
+
+	// Testing ft_strequ
+	printf("\nTesting ft_strequ\n");
+
+	if (ft_strequ("jeejee", "jeejee") != 1)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Returns %d for matching strings\n", ft_strequ("jeejee", "jeejee"));
+	}
+	else if (ft_strequ("jeejeejee", "jeejee") != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Returns %d for non-matching strings\n", ft_strequ("jeejeejee", "jeejee"));		
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
+
+	// Testing ft_strnequ
+	printf("\nTesting ft_strnequ\n");
+
+	if (ft_strnequ("jeejee", "jeejee", 20) != 1)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Returns %d for matching strings\n", ft_strnequ("jeejee", "jeejee", 20));
+	}
+	else if (ft_strnequ("jeejeejee", "jeejee", 20) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Returns %d for non-matching strings\n", ft_strnequ("jeejeejee", "jeejee", 20));		
+	}
+	else if (ft_strnequ("jeejeejee", "jeejee", 6) != 1)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Returns %d for non-matching strings when they match up to n chars\n", ft_strnequ("jeejeejee", "jeejee", 6));		
+	}	
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}	
 
 }
 
