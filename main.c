@@ -18,16 +18,8 @@
 
 int main (void)
 {
-	// Testing ft_putchar
-	printf("-------\nTesting ft_putchar:\n");
-	ft_putstr("\x1B[32m");
-	ft_putchar('O');
-	ft_putchar('K');	
-	printf("\x1B[0m\n\n");
 
-	// Testing ft_putstr
-	ft_putstr("Testing ft_putstr: \n\x1B[32mOK\x1B[0m\n\n");
-	
+	printf("\n------\nPART 1\n------\n\n");	
 
 	// Testing ft_strlen
 	char *strs[20] = {"9223372036854775809", " -42", "abc 45 asd", "+-54 wkm", 
@@ -632,16 +624,98 @@ int main (void)
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 	}
 
+	// PART 2
+	printf("\n------\nPART 2\n------\n");
+
+
+	// Testing ft_putchar
+	printf("\nTesting ft_putchar:\n");
+	ft_putstr("\x1B[32m");
+	ft_putchar('O');
+	ft_putchar('K');	
+	printf("\x1B[0m\n\n");
+
+	// Testing ft_putstr
+	ft_putstr("Testing ft_putstr: \n\x1B[32mOK\x1B[0m\n");
+
 	// Testing ft_memalloc
 	printf("\nTesting ft_memalloc\n");
 
-	char *char_arr = ft_memalloc(15);
+	size_t sizet = 15;
+	char *char_arr = ft_memalloc(size);
 
-	for (int i = 0; i < 16; i++)
+	if (sizet == 0)
 	{
-		printf("%p, %c\n", &char_arr[i], (char)char_arr[i]);
+		if (char_arr != NULL)
+		{
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+			printf("Returns: %p, should return NULL", char_arr);
+		}
+		else
+		{
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+		}
+
+	}
+	else
+	{
+		for (size_t i = 0; i < sizet; i++)
+		{
+			if ((char)char_arr[i] != 0)
+			{
+				printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+				printf("Value in index %zu initialized to %c, should be 0", i, (char)char_arr[i]);
+				break ;
+			}
+			if (i == sizet - 1)
+			{
+				printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+			}
+		}
 	}
 
+	// Testing ft_memdel
+	printf("\nTesting ft_memdel\n");
+
+	char *tst12 = (char *)malloc(25);
+	tst12[0] = 'j';
+	tst12[1] = 'e';
+	tst12[2] = 'e';
+
+	ft_memdel((void **)&tst12);
+
+	if (tst12 != NULL)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Address is %p, should be NULL\n", tst12);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");		
+	}
+
+	// Testing ft_strnew
+	printf("\nTesting ft_strnew\n");
+
+	char *tst13 = ft_strnew(15);
+	tst13[0] = 'j';
+	tst13[1] = 'e';
+	tst13[2] = 'e';	
+
+	if (tst13 == NULL)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("NULL pointer returned\n");
+	}
+	else if (tst13[0] != 'j')
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Couldn't write to string\n");		
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");		
+	}
 
 
 

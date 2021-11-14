@@ -48,5 +48,7 @@ char				*ft_strrchr(const char *s, int c);
 char				*ft_strstr(const char *haystack, const char *needle);
 char				*ft_strnstr(const char *hay, const char *nee, size_t len);
 void				*ft_memalloc(size_t size);
+void				ft_memdel(void **ap);
+char				*ft_strnew(size_t size);
 
 #endif
