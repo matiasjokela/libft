@@ -15,6 +15,7 @@
 #include <ctype.h>
 #include <xlocale.h>
 
+void plus_one(char *str);
 
 int main (void)
 {
@@ -717,6 +718,73 @@ int main (void)
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");		
 	}
 
+	// Testing ft_strdel
+	printf("\nTesting ft_strdel\n");
+
+	char *tst14 = (char *)malloc(25);
+	tst14[0] = 'j';
+	tst14[1] = 'e';
+	tst14[2] = 'e';
+
+	ft_strdel(&tst14);
+
+	if (tst14 != NULL)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Address is %p, should be NULL\n", tst14);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");		
+	}
+
+	// Testing ft_strclr
+	printf("\nTesting ft_strclr\n");
+	char tst15[] = "jeejee";
+	ft_strclr(tst15);
+	for (int i = 0; i < 7; i++)
+	{
+		if (tst15[i] != '\0')
+		{
+			printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+			printf("Char in index %d is '%c', should be '\\0'\n", i, tst15[i]);
+			break ;
+		}
+		if (i == 6)
+		{
+			printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+		}
+	}
+
+	// Testing ft_striter
+	printf("\nTesting ft_striter\n");
+
+	char tst16[] = "abcd";
+	char tst17[] = "bcde";
+
+	char *tst18 = NULL;
 
 
+	ft_striter(tst16, &plus_one);
+	ft_striter(tst18, &plus_one);
+
+	if (strcmp(tst16, tst17) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("String %s and %s ddon't match\n", tst16, tst17);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
+
+
+
+
+
+}
+
+void plus_one(char *str)
+{
+	str[0]++;
 }
