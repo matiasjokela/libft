@@ -898,12 +898,28 @@ int main (void)
 	else
 	{
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
-	}	
+	}
+
+	// Testing ft_strsub
+	printf("\nTesting ft_strsub\n");
+	char *sour = "We don't need no education";
+	char *sub = "need no";
+
+	if (ft_strcmp(ft_strsub(sour, 9, 7), sub) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Output: %s, should be: %s", ft_strsub(sour, 9, 7), sub);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
+
 
 }
 
 
-
+////////////////////////////////////////////////////////////////
 
 void uppercase(char *str)
 {
