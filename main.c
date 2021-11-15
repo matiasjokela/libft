@@ -915,6 +915,40 @@ int main (void)
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 	}
 
+	// Testing ft_strjoin
+	printf("\nTesting ft_strjoin\n");
+	char strj[60] = "Hello, ";
+	char *strj1 = "Hello, ";
+	char *strj2 = "world!";
+	char *strj4 = ft_strjoin(strj1, strj2);
+	ft_strcat(strj, strj2);
+
+
+	if (ft_strcmp(strj4, strj) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Returns: %s, should return %s\n", strj4, strj);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}	
+
+	// Testing ft_strtrim
+	printf("\nTesting ft_strtrim\n");
+	char *strt = "	    jee, jee	      ";
+	char *strt1 = "jee, jee";
+	char *strt2 = ft_strtrim(strt);
+
+	if (ft_strcmp(strt2, strt1) != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");
+		printf("Returns: \"%s\", should return \"%s\"\n", strt2, strt1);
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}		
 
 }
 
