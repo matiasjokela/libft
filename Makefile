@@ -16,7 +16,9 @@ HEADER = libft.h
 O_FILES = *.o
 
 
-all:
+all: $(NAME)
+
+$(NAME):
 	gcc -c -Wall -Werror -Wextra $(HEADER) $(SRCS);
 	ar rc $(NAME) $(O_FILES);
 	ranlib $(NAME);
