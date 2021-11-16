@@ -966,7 +966,6 @@ int main (void)
 	}
 
 
-
 	// memmove problem
 	/*char	src99[] = "lorem ipsum dolor sit amet";
 	char	*dest98;
