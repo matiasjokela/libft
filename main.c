@@ -950,6 +950,23 @@ int main (void)
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 	}
 
+	// Testing ft_strsplit
+	printf("\nTesting ft_strsplit\n");
+	char **strarr = ft_strsplit("*hello*fellow***students*", '*');
+
+
+
+	if (ft_strcmp(strarr[0], "hello") != 0 || ft_strcmp(strarr[1], "fellow") != 0 || ft_strcmp(strarr[2], "students") != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");		
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
+
+
+
 	// memmove problem
 	/*char	src99[] = "lorem ipsum dolor sit amet";
 	char	*dest98;
@@ -964,6 +981,8 @@ int main (void)
 	ft_memmove(dest99, src99, 8);
 	printf("%s\n", dest98);
 	printf("%s\n", dest99);*/
+
+
 
 
 
