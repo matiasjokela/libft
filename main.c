@@ -950,7 +950,8 @@ int main (void)
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 	}
 
-	char	src99[] = "lorem ipsum dolor sit amet";
+	// memmove problem
+	/*char	src99[] = "lorem ipsum dolor sit amet";
 	char	*dest98;
 	char	*dest99;
 
@@ -962,19 +963,8 @@ int main (void)
 	memmove(dest98, src99, 8);
 	ft_memmove(dest99, src99, 8);
 	printf("%s\n", dest98);
-	printf("%s\n", dest99);
+	printf("%s\n", dest99);*/
 
-	/*for (int i = 0; i < 10; i++)
-	{
-		printf("%d, ", move_ori[i]);
-	}
-	printf("\n");
-
-	for (int i = 0; i < 10; i++)
-	{
-		printf("%d, ", move_ft[i]);
-	}
-	printf("\n");	*/
 
 
 }
