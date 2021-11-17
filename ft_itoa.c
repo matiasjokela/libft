@@ -7,18 +7,25 @@ char	*ft_itoa(int n)
 	int		i;
 	int		j;
 	char	*stri;
-	char	*tmp;
 
-	i = 0;
+	i = ft_intlen(n);
+
 	j = 0;
-	stri = (char *)malloc(sizeof(char) * ft_intlen(n) + 1);
-	tmp = (char *)malloc(sizeof(char) * ft_intlen(n) + 1);	
-	if (stri == NULL || tmp == NULL)
+	stri = (char *)malloc(sizeof(char) * i + 1);
+	if (stri == NULL)
 		return (NULL);
-	while (n % 10 != 0)
+	stri[i--] = '\0';
+	if (n < 0)
 	{
-
+		stri[0] = '-';
+		n *= -1;
 	}
-	free(tmp);
+	while (n / 10 != 0)
+	{
+		stri[i] = n % 10 + '0';
+		n = n / 10;
+		i--;
+	}
+	stri[i--] = n % 10 + '0';
 	return (stri);
 }

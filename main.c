@@ -14,6 +14,7 @@
 #include <stdio.h>
 #include <ctype.h>
 #include <xlocale.h>
+#include <fcntl.h>
 
 void uppercase(char *str);
 void uppercase_even(unsigned int i, char *str);
@@ -965,6 +966,51 @@ int main (void)
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
 	}
 
+
+	// Testing ft_itoa
+	printf("\nTesting ft_itoa\n");
+	if (ft_strcmp(ft_itoa(5698), "5698") != 0 || ft_strcmp(ft_itoa(-2012123123), "-2012123123") != 0 || ft_strcmp(ft_itoa(-0), "0") != 0)
+	{
+		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");		
+	}
+	else
+	{
+		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+	}
+
+	// Testing ft_putendl
+	printf("\nTesting ft_putendl\n");
+	ft_putendl("\x1B[32mOK\x1B[0m");
+
+	// Testing ft_putnbr
+	printf("\nTesting ft_putnbr\n");
+	ft_putnbr(42);
+	ft_putchar('\n');
+
+	// Testing ft_putchar_fd
+	printf("\nTesting ft_putchar_fd:\n");
+	int fd = open("ft_putchar_fd.txt", O_RDWR | O_APPEND | O_CREAT, 0644);
+	ft_putchar_fd('4', fd);
+	ft_putchar_fd('2', fd);
+	ft_putchar_fd('\n', fd);
+	close(fd);
+	fd = open("ft_putchar_fd.txt", O_RDONLY);
+	char buf[1];
+	while (read(fd, buf, 1) > 0)
+		ft_putchar(buf[0]);
+	close(fd);
+	remove("ft_putchar_fd.txt");
+
+	// Testing ft_putstr_fd
+	printf("\nTesting ft_putstr_fd:\n");
+	fd = open("ft_putstr_fd.txt", O_RDWR | O_APPEND | O_CREAT, 0644);
+	ft_putstr("\x1B[32mOK\x1B[0m\n");
+	close(fd);
+	fd = open("ft_putstr_fd.txt", O_RDONLY);
+	while (read(fd, buf, 1) > 0)
+		ft_putchar(buf[0]);
+	close(fd);
+	remove("ft_putstr_fd.txt");
 
 	// memmove problem
 	/*char	src99[] = "lorem ipsum dolor sit amet";

@@ -66,5 +66,9 @@ long int			ft_dstrlen(char const *str, char c);
 int					ft_count_delimited_words(char const *s, char c);
 int					ft_intlen(int n);
 char				*ft_itoa(int n);
+void				ft_putendl(char const *s);
+void				ft_putnbr(int n);
+void				ft_putchar_fd(char c, int fd);
+void				ft_putstr_fd(char const *str, int fd);
 
 #endif
