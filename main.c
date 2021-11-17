@@ -1004,13 +1004,36 @@ int main (void)
 	// Testing ft_putstr_fd
 	printf("\nTesting ft_putstr_fd:\n");
 	fd = open("ft_putstr_fd.txt", O_RDWR | O_APPEND | O_CREAT, 0644);
-	ft_putstr("\x1B[32mOK\x1B[0m\n");
+	ft_putstr_fd("\x1B[32mOK\x1B[0m\n", fd);
 	close(fd);
 	fd = open("ft_putstr_fd.txt", O_RDONLY);
 	while (read(fd, buf, 1) > 0)
 		ft_putchar(buf[0]);
 	close(fd);
 	remove("ft_putstr_fd.txt");
+
+	// Testing ft_putendl_fd
+	printf("\nTesting ft_putendl_fd:\n");
+	fd = open("ft_putendl_fd.txt", O_RDWR | O_APPEND | O_CREAT, 0644);
+	ft_putendl_fd("\x1B[32mOK\x1B[0m", fd);
+	close(fd);
+	fd = open("ft_putendl_fd.txt", O_RDONLY);
+	while (read(fd, buf, 1) > 0)
+		ft_putchar(buf[0]);
+	close(fd);
+	remove("ft_putendl_fd.txt");	
+
+	// Testing ft_putnbrl_fd
+	printf("\nTesting ft_putnbr_fd:\n");
+	fd = open("ft_putnbr_fd.txt", O_RDWR | O_APPEND | O_CREAT, 0644);
+	ft_putnbr_fd(42, fd);
+	close(fd);
+	fd = open("ft_putnbr_fd.txt", O_RDONLY);
+	while (read(fd, buf, 1) > 0)
+		ft_putchar(buf[0]);
+	close(fd);
+	remove("ft_putnbr_fd.txt");
+	ft_putchar('\n');
 
 	// memmove problem
 	/*char	src99[] = "lorem ipsum dolor sit amet";
