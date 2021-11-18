@@ -20,6 +20,7 @@ void uppercase(char *str);
 void uppercase_even(unsigned int i, char *str);
 char toupper_char(char c);
 char toupper_char_even(unsigned int i, char c);
+void ft_del1(void *content, size_t size);
 
 int main (void)
 {
@@ -903,7 +904,7 @@ int main (void)
 
 	// Testing ft_strsub
 	printf("\nTesting ft_strsub\n");
-	char *sour = "We don't need no education";
+	/*char *sour = "We don't need no education";
 	char *sub = "need no";
 
 	if (ft_strcmp(ft_strsub(sour, 9, 7), sub) != 0)
@@ -914,7 +915,42 @@ int main (void)
 	else
 	{
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
-	}
+	}*/
+
+    int tests_passed = 0;
+
+    char *str = ft_strsub("grab the substring", 9, 3);
+    if (strcmp(str, "sub") == 0)
+        tests_passed++;
+    else
+        printf("\nERROR: strcmp(str, 'sub') != 0\n%s)", str);
+
+    free(str);
+    str = ft_strsub("grab the substring", 0, 1);
+    if (strcmp(str, "g") == 0)
+        tests_passed++;
+    else
+        printf("\nERROR: strcmp(str, 'g') != 0\n%s)", str);
+
+    free(str);
+    str = ft_strsub("grab the substring", 1, 0);
+    if (strcmp(str, "") == 0)
+        tests_passed++;
+    else
+        printf("\nERROR: strcmp(str, '') != 0\n%s)", str);
+
+    free(str);
+    str = ft_strsub("grab the \0substring", 10, 3);
+    if (strcmp(str, "sub") == 0)
+        tests_passed++;
+    else
+        printf("\nERROR: strcmp(str, 'sub') != 0\n%s)", str);
+
+    free(str);
+    if (tests_passed == 4)
+    {
+        printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+    }	
 
 	// Testing ft_strjoin
 	printf("\nTesting ft_strjoin\n");
@@ -937,7 +973,7 @@ int main (void)
 
 	// Testing ft_strtrim
 	printf("\nTesting ft_strtrim\n");
-	char *strt = "	    jee, jee	      ";
+	/*char *strt = "	    jee, jee	      ";
 	char *strt1 = "jee, jee";
 	char *strt2 = ft_strtrim(strt);
 
@@ -949,7 +985,42 @@ int main (void)
 	else
 	{
 		printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
-	}
+	}*/
+
+	tests_passed = 0;
+
+    str = ft_strtrim(" \n\t \n  \ttrim this string\t \n \t\t  ");
+    if (strcmp(str, "trim this string") == 0)
+        tests_passed++;
+    else
+        printf("\nERROR 1: strcmp(str, 'trim this string') != 0\n|%s|", str);
+    free(str);
+
+    str = ft_strtrim("trim this string");
+    if (strcmp(str, "trim this string") == 0)
+        tests_passed++;
+    else
+        printf("\nERROR 2: strcmp(str, 'trim this string') != 0\n|%s|", str);
+    free(str);
+
+    str = ft_strtrim("");
+    if (strcmp(str, "") == 0)
+        tests_passed++;
+    else
+        printf("\nERROR 3: strcmp(str, '') != 0\n|%s|", str);
+    free(str);
+
+    str = ft_strtrim("\t\n ");
+    if (strcmp(str, "") == 0)
+        tests_passed++;
+    else
+        printf("\nERROR 4: strcmp(str, '') != 0\n|%s|", str);
+    free(str);
+
+    if (tests_passed == 4)
+    {
+        printf("%sOK%s\n", "\x1B[32m", "\x1B[0m");
+    }
 
 	// Testing ft_strsplit
 	printf("\nTesting ft_strsplit\n");
@@ -1036,9 +1107,176 @@ int main (void)
 	ft_putchar('\n');
 
 
+	// BONUS PART
+	printf("\n-----------------------\nBONUS BONUS BONUS :))))\n-----------------------\n");
+
+	// Testing ft_lstnew
+	printf("\nTesting ft_lstnew:\n");
+	/*char *lstr = NULL;
+
+	t_list *tlst = ft_lstnew(lstr, 7);
+	printf("%p, %s\n", tlst->content, tlst->content);
+	printf("%p, %s\n", lstr, lstr);	*/
+
+	tests_passed = 0;
+
+	int		content[] = {1, 2, 3, 4, 5};
+	t_list	*new = ft_lstnew(content, sizeof(int)*5);
+
+	content[0] = 0;
+
+	for (int i = 0; i < 5; i++)
+	{
+		if (((int*)new->content)[i] == i + 1)
+			tests_passed++;
+		else
+			printf("\nERROR: ((int*)new->content)[i] != %d\n%d\n", i, ((int*)new->content)[i]);
+	}
 
 
+	if (new->next == NULL)
+		tests_passed++;
+	else
+		printf("\nERROR: new->next != NULL\n");
+	
+	if (new->content_size == sizeof(content))
+		tests_passed++;
+	else
+		printf("\nERROR: new->content_size != sizeof(content)\n");
+	
+	free(new->content);
+	free(new);
 
+	new = ft_lstnew(NULL, 100);
+
+	if (new->content == NULL)
+		tests_passed++;
+	else
+		printf("\nERROR: new->content != NULL\n");
+
+	if (new->next == NULL)
+		tests_passed++;
+	else
+		printf("\nERROR: new->next != NULL\n");
+
+	if (new->content_size == 0)
+		tests_passed++;
+	else
+		printf("\nERROR: new->content_size != 0\n");
+
+	free(new);
+
+	new = ft_lstnew("", 1);
+
+	if (memcmp(new->content, "", 1) == 0)
+		tests_passed++;
+	else
+		printf("\nERROR: new->content != '\\0'\n");
+
+	if (new->next == NULL)
+		tests_passed++;
+	else
+		printf("\nERROR: new->next != NULL\n");
+
+	if (new->content_size == 1)
+		tests_passed++;
+	else
+		printf("\nERROR: new->content_size != 1\n");
+	
+	free(new->content);
+	free(new);
+
+	new = ft_lstnew("not this", 0);
+
+	if (new->content == NULL)
+		tests_passed++;
+	else
+		printf("\nERROR: new->content != NULL\n");
+
+	if (new->next == NULL)
+		tests_passed++;
+	else
+		printf("\nERROR: new->next != NULL\n");
+
+	if (new->content_size == 0)
+		tests_passed++;
+	else
+		printf("\nERROR: new->content_size != 0\n");
+	
+	free(new);
+
+	if (tests_passed == 16)
+	{
+		printf("\x1B[32mOK\x1B[0m\n");
+	}	
+
+	// Testing ft_lstdelone
+	printf("\nTesting ft_lstdelone:\n");
+
+	tests_passed = 0;
+
+	new = ft_lstnew(content, sizeof(int)*5);
+	t_list	*next = ft_lstnew("42", sizeof(char)*3);
+
+	new->next = next;
+
+
+	ft_lstdelone(&new, ft_del1);
+
+	if (new == NULL)
+		tests_passed++;
+	else
+		printf("\nERROR: new != NULL\n");
+	
+	if (next != NULL)
+		tests_passed++;
+	else
+		printf("\nERROR: next == NULL\n");
+
+	ft_lstdelone(&next, ft_del1);
+
+	if (next == NULL)
+		tests_passed++;
+	else
+		printf("\nERROR: next != NULL\n");
+
+	new = ft_lstnew("", 0);
+	ft_lstdelone(&new, ft_del1);
+
+	if (new == NULL)
+		tests_passed++;
+	else
+		printf("\nERROR: new != NULL\n");
+
+	if (tests_passed == 4)
+	{
+		printf("\x1B[32mOK\x1B[0m\n");
+	}
+
+
+	// Testing ft_lstdel
+	printf("\nTesting ft_lstdel:\n");
+
+	tests_passed = 0;
+
+	t_list	*first = ft_lstnew(content, sizeof(int)*5);
+	t_list	*second = ft_lstnew("42", sizeof(char)*3);
+	t_list	*last = ft_lstnew("", 1);
+
+	first->next = second;
+	second->next = last;
+
+	ft_lstdel(&first, ft_del1);
+
+	if (first == NULL)
+		tests_passed++;
+	else
+		printf("\nERROR: first != NULL");
+
+	if (tests_passed == 1)
+	{
+		printf("\x1B[32mOK\x1B[0m\n");
+	}
 
 }
 
@@ -1068,4 +1306,10 @@ char	toupper_char_even(unsigned int i, char c)
 	if (c >= 'a' && c <= 'z' && i % 2 == 0)
 		c -= 'a' - 'A';
 	return (c);
+}
+
+void	ft_del1(void *content, size_t size)
+{
+	if (size != 0)
+		free(content);
 }
