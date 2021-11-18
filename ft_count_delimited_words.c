@@ -1,4 +1,14 @@
-
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_count_delimited_words.c                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mjokela <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2021/11/18 10:54:41 by mjokela           #+#    #+#             */
+/*   Updated: 2021/11/18 10:54:47 by mjokela          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 int	ft_count_delimited_words(char const *s, char c)
 {
@@ -13,5 +23,5 @@ int	ft_count_delimited_words(char const *s, char c)
 			wc++;
 		i++;
 	}
-	return	(wc);
+	return (wc);
 }

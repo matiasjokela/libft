@@ -72,5 +72,6 @@ void				ft_putchar_fd(char c, int fd);
 void				ft_putstr_fd(char const *str, int fd);
 void				ft_putendl_fd(char const *s, int fd);
 void				ft_putnbr_fd(int n, int fd);
+void				*tst_memmove(void *dst, const void *src, size_t len);
 
 #endif

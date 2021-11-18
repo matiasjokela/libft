@@ -969,7 +969,7 @@ int main (void)
 
 	// Testing ft_itoa
 	printf("\nTesting ft_itoa\n");
-	if (ft_strcmp(ft_itoa(5698), "5698") != 0 || ft_strcmp(ft_itoa(-2012123123), "-2012123123") != 0 || ft_strcmp(ft_itoa(-0), "0") != 0)
+	if (ft_strcmp(ft_itoa(5698), "5698") != 0 || ft_strcmp(ft_itoa(-2147483648LL), "-2147483648") != 0 || ft_strcmp(ft_itoa(-0), "0") != 0)
 	{
 		printf("%sKO%s\n", "\x1B[31m", "\x1B[0m");		
 	}
@@ -984,7 +984,7 @@ int main (void)
 
 	// Testing ft_putnbr
 	printf("\nTesting ft_putnbr\n");
-	ft_putnbr(42);
+	ft_putnbr(-2147483648LL);
 	ft_putchar('\n');
 
 	// Testing ft_putchar_fd
@@ -1023,10 +1023,10 @@ int main (void)
 	close(fd);
 	remove("ft_putendl_fd.txt");	
 
-	// Testing ft_putnbrl_fd
+	// Testing ft_putnbr_fd
 	printf("\nTesting ft_putnbr_fd:\n");
 	fd = open("ft_putnbr_fd.txt", O_RDWR | O_APPEND | O_CREAT, 0644);
-	ft_putnbr_fd(42, fd);
+	ft_putnbr_fd(-2147483648LL, fd);
 	close(fd);
 	fd = open("ft_putnbr_fd.txt", O_RDONLY);
 	while (read(fd, buf, 1) > 0)
@@ -1035,20 +1035,6 @@ int main (void)
 	remove("ft_putnbr_fd.txt");
 	ft_putchar('\n');
 
-	// memmove problem
-	/*char	src99[] = "lorem ipsum dolor sit amet";
-	char	*dest98;
-	char	*dest99;
-
-
-	dest98 = src99 + 1;
-	dest99 = src99 + 1;
-
-	alarm(5);
-	memmove(dest98, src99, 8);
-	ft_memmove(dest99, src99, 8);
-	printf("%s\n", dest98);
-	printf("%s\n", dest99);*/
 
 
 
