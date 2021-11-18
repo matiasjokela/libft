@@ -21,6 +21,7 @@ void uppercase_even(unsigned int i, char *str);
 char toupper_char(char c);
 char toupper_char_even(unsigned int i, char c);
 void ft_del1(void *content, size_t size);
+void ft_f1(t_list *elem);
 
 int main (void)
 {
@@ -1294,14 +1295,13 @@ int main (void)
 	ft_lstadd(&first, second);
 	ft_lstadd(&first, last);
 
-	printf("%zu\n", first->content_size);
 
 	if (first->content_size == 1)
 		tests_passed++;
 	else
 		printf("\nERROR: first->content_size != 1");
 
-	/*if (first->next->content_size == 3)
+	if (first->next->content_size == 3)
 		tests_passed++;
 	else
 		printf("\nERROR: first->content_size != 1");
@@ -1311,13 +1311,65 @@ int main (void)
 	else
 		printf("\nERROR: first->content_size != sizeof(int)*5");
 
-	ft_lstdel(&first, ft_del1);*/
+	ft_lstdel(&first, ft_del1);
 
 	if (tests_passed == 3)
 	{
-		printf("\tOK\n");
+		printf("\x1B[32mOK\x1B[0m\n");
+	}
+	/*
+	t_list *yksi = ft_lstnew("kolme", 6);
+	t_list *kaksi = ft_lstnew("kaksi", 6);
+	t_list *kolme = ft_lstnew("yksi", 5);
+
+	ft_lstadd(&yksi, kaksi);
+	ft_lstadd(&kaksi, kolme);
+
+	printf("%s, %s, %s\n", (char *)kolme->content, (char *)kolme->next->content, (char *)kolme->next->next->content);
+
+	*/
+
+	// Testing ft_lstiter
+	printf("\nTesting ft_lstiter:\n");
+	tests_passed = 0;
+
+
+	first = ft_lstnew(content, sizeof(int)*5);
+	second = ft_lstnew("42", sizeof(char)*3);
+	last = ft_lstnew("", 1);
+
+	first->next = second;
+	second->next = last;
+
+	//printf("%p, %zu\n", first, first->content_size);
+	ft_lstiter(first, ft_f1);
+	//printf("%p, %zu\n", first, first->content_size);	
+
+	if (first->content_size == sizeof(content) + 1)
+		tests_passed++;
+	else
+		printf("\nERROR: first->content_size != sizeof(content) + 1\n");
+
+	if (second->content_size == sizeof(char)*3 + 1)
+		tests_passed++;
+	else
+		printf("\nERROR: second->content_size != sizeof(char)*3 + 1\n");
+
+	if (last->content_size == sizeof(char) + 1)
+		tests_passed++;
+	else
+		printf("\nERROR: last->content_size != sizeof(char) + 1\n");
+
+	ft_lstdel(&first, ft_del1);
+
+	if (tests_passed == 3)
+	{
+		printf("\x1B[32mOK\x1B[0m\n");
+
 	}
 
+	
+	
 
 }
 
@@ -1353,4 +1405,9 @@ void	ft_del1(void *content, size_t size)
 {
 	if (size != 0)
 		free(content);
+}
+
+void	ft_f1(t_list *elem)
+{
+	elem->content_size++;
 }
