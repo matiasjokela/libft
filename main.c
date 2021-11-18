@@ -1278,6 +1278,47 @@ int main (void)
 		printf("\x1B[32mOK\x1B[0m\n");
 	}
 
+
+	// Testing ft_lstadd
+	printf("\nTesting ft_lstadd:\n");
+
+
+	tests_passed = 0;
+
+	first = ft_lstnew(content, sizeof(int)*5);
+	second = ft_lstnew("42", sizeof(char)*3);
+	last = ft_lstnew("", 1);
+
+
+
+	ft_lstadd(&first, second);
+	ft_lstadd(&first, last);
+
+	printf("%zu\n", first->content_size);
+
+	if (first->content_size == 1)
+		tests_passed++;
+	else
+		printf("\nERROR: first->content_size != 1");
+
+	/*if (first->next->content_size == 3)
+		tests_passed++;
+	else
+		printf("\nERROR: first->content_size != 1");
+
+	if (first->next->next->content_size == sizeof(int)*5)
+		tests_passed++;
+	else
+		printf("\nERROR: first->content_size != sizeof(int)*5");
+
+	ft_lstdel(&first, ft_del1);*/
+
+	if (tests_passed == 3)
+	{
+		printf("\tOK\n");
+	}
+
+
 }
 
 
