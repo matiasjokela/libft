@@ -22,6 +22,7 @@ char toupper_char(char c);
 char toupper_char_even(unsigned int i, char c);
 void ft_del1(void *content, size_t size);
 void ft_f1(t_list *elem);
+t_list *ft_f2(t_list *elem);
 
 int main (void)
 {
@@ -1368,8 +1369,45 @@ int main (void)
 
 	}
 
-	
-	
+	// Testing ft_lstmap
+	printf("\nTesting ft_lstmap:\n");
+
+	tests_passed = 0;
+
+	first = ft_lstnew(content, sizeof(int)*5);
+	second = ft_lstnew("42", sizeof(char)*3);
+	last = ft_lstnew("", 1);
+
+	first->next = second;
+	second->next = last;
+
+
+
+	t_list *newmap = ft_lstmap(first, ft_f2);
+
+
+	if (newmap->content_size == sizeof(content) + 1)
+		tests_passed++;
+	else
+		printf("\nERROR: first->content_size != sizeof(content) + 1\n");
+
+	if (newmap->next->content_size == sizeof(char)*3 + 1)
+		tests_passed++;
+	else
+		printf("\nERROR: second->content_size != sizeof(char)*3 + 1\n");
+
+	if (newmap->next->next->content_size == sizeof(char) + 1)
+		tests_passed++;
+	else
+		printf("\nERROR: last->content_size != sizeof(char) + 1\n");
+
+	ft_lstdel(&first, ft_del1);
+	ft_lstdel(&newmap, ft_del1);
+
+	if (tests_passed == 3)
+	{
+		printf("\x1B[32mOK\x1B[0m\n");
+	}
 
 }
 
@@ -1410,4 +1448,12 @@ void	ft_del1(void *content, size_t size)
 void	ft_f1(t_list *elem)
 {
 	elem->content_size++;
+}
+
+t_list	*ft_f2(t_list *elem)
+{
+	t_list *new = ft_lstnew(elem->content, elem->content_size);
+	if (new != NULL)
+		new->content_size++;
+	return (new);
 }
