@@ -185,7 +185,7 @@ int main (void)
 	// Testing ft_atoi
 	char *strs1[20] = {"9223372036854775809", " -42", "abc 45 asd", "+-54 wkm", 
 	" - 6", "00#00", "€545", "#4-4", "-2950000000", "", 
-	"ksldfj95050544546064530334035310510060680550468656", "+ -  2"};
+	"ksldfj95050544546064530334035310510060680550468656", "-6645676547567445614657"};
 	int size1 = 12;
 	printf("Testing ft_atoi:\n");
 	for (int i = 0; i < size1; i++)
@@ -1408,6 +1408,137 @@ int main (void)
 	{
 		printf("\x1B[32mOK\x1B[0m\n");
 	}
+
+	/*printf("\n");
+	printf("ft_atoi (987987987987) %i\n", ft_atoi("987987987987"));
+	printf("REAL atoi: %i\n", atoi("987987987987"));
+	
+	printf("\n");
+	printf("ft_atoi (987987987987987987987987) %i\n", ft_atoi("987987987987987987987987"));
+	printf("REAL atoi: %i\n", atoi("987987987987987987987987"));
+	
+	printf("\n");
+	printf("ft_atoi (6885fghfghgfdh567445674657) %i\n", ft_atoi("6885fghfghgfdh567445674657"));
+	printf("REAL atoi: %i\n", atoi("6885fghfghgfdh567445674657"));
+
+	printf("\n");
+	printf("ft atoi (777) %i\n", ft_atoi("777"));
+	printf("REAL atoi: %i\n", atoi("777"));
+
+	printf("\n");
+	printf("ft_atoi (Hello world) %i\n", ft_atoi("Hello world"));
+	printf("REAL atoi: %i\n", atoi("Hello world"));
+
+	printf("\n");
+	printf("ft_atoi (-Hello world) %i\n", ft_atoi("-Hello world"));
+	printf("REAL atoi: %i\n", atoi("-Hello world"));
+
+	printf("\n");
+	printf("ft_atoi (-9) %i\n", ft_atoi("-9"));
+	printf("REAL atoi: %i\n", atoi("-9"));
+
+	printf("\n");
+	printf("ft_atoi (-3000111000) %i\n", ft_atoi("-3000111000"));
+	printf("REAL atoi: %i\n", atoi("-3000111000"));
+
+	printf("\n");
+	printf("ft_atoi (adfdff445674657) %i\n", ft_atoi("adfdff445674657"));
+	printf("REAL atoi: %i\n", atoi("adfdff445674657"));
+
+	printf("\n");
+	printf("ft_atoi (-6645676547567445614657) %i\n", ft_atoi("-6645676547567445614657"));
+	printf("REAL atoi: %i\n", atoi("-6645676547567445614657"));
+
+	printf("\n");
+	printf("ft_atoi (3123123123) %i\n", ft_atoi("3123123123"));
+	printf("REAL atoi: %i\n", atoi("3123123123"));
+
+	printf("\n");
+	printf("ft_atoi (-05) %i\n", ft_atoi("-05"));
+	printf("REAL atoi: %i\n", atoi("-05"));
+
+	printf("\n");
+	printf("ft_atoi (-007) %i\n", ft_atoi("-007"));
+	printf("Tulos, oikea atoi: %i\n", atoi("-007"));
+
+	printf("\n");
+	printf("ft_atoi (007) %i\n", ft_atoi("007"));
+	printf("Tulos, oikea atoi: %i\n", atoi("007"));
+
+	printf("\n");
+	printf("ft_atoi (000042) %i\n", ft_atoi("000042"));
+	printf("Tulos, oikea atoi: %i\n", atoi("000042"));
+
+	printf("\n");
+	printf("ft_atoi (0010) %i\n", ft_atoi("0010"));
+	printf("Tulos, oikea atoi: %i\n", atoi("0010"));
+
+	printf("\n");
+	printf("ft_atoi (	-0002aa42) %i\n", ft_atoi("	-0002aa42"));
+	printf("Tulos, oikea atoi: %i\n", atoi("	-0002aa42"));
+
+	printf("\n");
+	printf("ft_atoi (	0002aa42) %i\n", ft_atoi("	0002aa42"));
+	printf("Tulos, oikea atoi: %i\n", atoi("	0002aa42"));
+
+	printf("\n");
+	printf("ft_atoi (     -42) %i\n", ft_atoi("     -42"));
+	printf("Tulos, oikea atoi: %i\n", atoi("     -42"));
+
+	printf("\n");
+	printf("ft_atoi (-0002aa42) %i\n", ft_atoi("-0002aa42"));
+	printf("Tulos, oikea atoi: %i\n", atoi("-0002aa42"));
+
+	printf("\n");
+	printf("ft_atoi (   -   0002aa42) %i\n", ft_atoi("   -   0002aa42"));
+	printf("Tulos, oikea atoi: %i\n", atoi("   -   0002aa42"));
+
+	printf("\n");
+	printf("ft_atoi (000-42) %i\n", ft_atoi("000-42"));
+	printf("Tulos, oikea atoi: %i\n", atoi("000-42"));
+
+	printf("\n");
+	printf("ft_atoi (\f12345) %i\n", ft_atoi("\f12345"));
+	printf("Tulos, oikea atoi: %i\n", atoi("\f12345"));
+
+	printf("\n");
+	printf("ft_atoi (++12) %i\n", ft_atoi("++12"));
+	printf("Tulos, oikea atoi: %i\n", atoi("++12"));
+
+	printf("\n");
+	printf("ft_atoi (  \n34567) %i\n", ft_atoi("  \n34567"));
+	printf("Tulos, oikea atoi: %i\n", atoi("  \n34567"));
+
+	printf("\n");
+	printf("ft_atoi (  \v  -876) %i\n", ft_atoi("  \v  -876"));
+	printf("Tulos, oikea atoi: %i\n", atoi("  \v  -876"));
+
+	printf("\n");
+	printf("ft_atoi (-\r456) %i\n", ft_atoi("-\r456"));
+	printf("Tulos, oikea atoi: %i\n", atoi("-\r456"));
+
+	printf("1 Real: %d\t My: %d\n", atoi("--1"), ft_atoi("--1"));
+    printf("2 Real: %d\t My: %d\n", atoi("+-12"), ft_atoi("+-12"));
+    printf("3 Real: %d\t My: %d\n", atoi("++12"), ft_atoi("++12"));
+    printf("4 Real: %d\t My: %d\n", atoi("-+12"), ft_atoi("-+12"));
+    printf("5 Real: %d\t My: %d\n", atoi("     12"), ft_atoi("     12"));
+    printf("6 Real: %d\t My: %d\n", atoi("\v\t\f -12"), ft_atoi("\t\v\f -12"));
+    printf("7 Real: %d\t My: %d\n", atoi("-     12"), ft_atoi("-     12"));
+    printf("8 Real: %d\t My: %d\n", atoi("!-12"), ft_atoi("!-12"));
+    printf("9 Real: %d\t My: %d\n", atoi("!12"), ft_atoi("!12"));
+    printf("10 Real: %d\t My: %d\n", atoi("   +  12+12"), ft_atoi("   +   12+12"));
+    printf("11 Real: %d\t My: %d\n", atoi("123456789"), ft_atoi("123456789"));
+    printf("12 Real: %d\t My: %d\n", atoi("0"), ft_atoi("0"));
+    printf("13 Real: %d\t My: %d\n", atoi("0123"), ft_atoi("0123"));
+    printf("14 Real: %d\t My: %d\n", atoi("-01234"), ft_atoi("-01234"));
+    printf("15 Real: %d\t My: %d\n", atoi("-2147483648"), ft_atoi("-2147483648"));
+    printf("16 Real: %d\t My: %d\n", atoi("2147483647"), ft_atoi("2147483647"));
+    printf("18 Real: %d\t My: %d\n", atoi("-12-12"), ft_atoi("-12-12"));
+    printf("19 Real: %d\t My: %d\n", atoi(""), ft_atoi(""));
+    printf("20 Real: %d\t My: %d\n", atoi(" "), ft_atoi(" "));
+    printf("21 Real: %d\t My: %d\n", atoi("a"), ft_atoi("a"));
+    printf("22 Real: %d\t My: %d\n", atoi("a1"), ft_atoi("a1"));
+    printf("23 Real: %d\t My: %d\n", atoi("12a12"), ft_atoi("12a12"));*/
 
 }
 
