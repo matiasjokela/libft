@@ -19,6 +19,8 @@ char	*ft_strtrim(char const *s)
 	int		j;
 	int		k;
 
+	if (s == NULL)
+		return (NULL);
 	trim = (char *)malloc(ft_strlen(s) + 1);
 	i = 0;
 	j = 0;

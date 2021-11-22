@@ -16,6 +16,8 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	unsigned char	*buf;
 
+	if (dst == NULL || src == NULL)
+		return (NULL);
 	buf = (unsigned char *)(malloc(sizeof(char) * len + 1));
 	if (buf == NULL)
 		return (NULL);
