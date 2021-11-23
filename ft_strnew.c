@@ -22,5 +22,5 @@ char	*ft_strnew(size_t size)
 		new[0] = '\0';
 		return (new);
 	}
-	return ((char *)ft_memalloc(size));
+	return ((char *)ft_memalloc(size + 1));
 }

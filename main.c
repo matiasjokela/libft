@@ -24,7 +24,6 @@ void ft_del1(void *content, size_t size);
 void ft_f1(t_list *elem);
 t_list *ft_f2(t_list *elem);
 static int  ft_array_size(char **arr);
-static void	ft_free_array(char **arr, int size);
 
 int main (void)
 {
@@ -206,9 +205,9 @@ int main (void)
 	ft_putchar('\n');
 
 	// Testing ft_strcmp
-	char const *cmp1 = "ökljäa&&wieuqo88798";
-	char *strs2[20] = {"9223372036854775809", " klja&&wieuqo88798", "abc 45 asd", "+-54 wkm", 
-	" - 6", "äklja&&wieuqo88798", "€545", "klja&&wieuqo88798sd", "-2950000000", "", 
+	char const *cmp1 = "Lorem Ipsum";
+	char *strs2[20] = {"dsf9223372036854775809", " klja&&wieuqo88798", "abc 45 asd", "+-54 wkm", 
+	" - 6", "dklja&&wieuqo88798", "g$545", "klja&&wieuqo88798sd", "-2950000000", "", 
 	"ksldfj95050544546064530334035310510060680550468656", "+ -  2"};
 	int size2 = 12;	
 	printf("Testing ft_strcmp:\n");
@@ -1612,7 +1611,7 @@ int main (void)
 	
 
 
-
+	
 
 
 
@@ -1665,15 +1664,7 @@ t_list	*ft_f2(t_list *elem)
 	return (new);
 }
 
-static void	ft_free_array(char **arr, int size)
-{
-	while (size > 0)
-	{
-		free(arr[size - 1]);
-		size--;
-	}
-	free(arr);
-}
+
 
 static int  ft_array_size(char **arr)
 {
