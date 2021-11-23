@@ -88,5 +88,4 @@ t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 int					ft_fill_array(char **arr, char const *s, char c, int size);
 void				ft_free_array(char **arr, int size);
 
-
 #endif

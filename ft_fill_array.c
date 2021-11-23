@@ -39,4 +39,3 @@ int	ft_fill_array(char **arr, char const *s, char c, int size)
 	}
 	return (0);
 }
-
