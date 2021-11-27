@@ -17,6 +17,8 @@ char	*ft_strnstr(const char *hay, const char *nee, size_t len)
 	size_t	i;
 	size_t	j;
 
+	if (hay == NULL || nee == NULL)
+		return (NULL);
 	i = 0;
 	j = (size_t)ft_strlen(nee);
 	if (nee[0] == '\0')

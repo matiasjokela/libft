@@ -17,6 +17,8 @@ char	*ft_strdup(char const *src)
 	char	*str;
 	int		i;
 
+	if (src == NULL)
+		return (NULL);
 	str = malloc(ft_strlen(src) + 1);
 	i = 0;
 	if (str == 0)
