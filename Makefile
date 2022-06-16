@@ -25,8 +25,9 @@ ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c \
 ft_fill_array.c ft_free_array.c
 
 HEADER = libft.h
-SRCS = $(addprefix libft_functions/, $(LIBFT_FILES))
-O_FILES = $(LIBFT_FILES:.c=.o)
+SRCS = $(addprefix libft_functions/, $(LIBFT_FILES)) \
+get_next_line/get_next_line.c
+O_FILES = $(LIBFT_FILES:.c=.o) get_next_line.o
 
 .PHONY: all clean fclean re
 
