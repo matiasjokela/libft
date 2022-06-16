@@ -24,10 +24,15 @@ ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c ft_strrchr.c \
 ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c \
 ft_fill_array.c ft_free_array.c
 
+PRINTF_FILES = checking_and_dispatching.c ft_printf.c \
+little_helpers.c print_char.c print_float.c print_hex.c print_int.c \
+print_modulo.c print_octal.c print_pointer.c print_string.c \
+print_uint.c reading.c float_helpers.c print_bits.c
+
 HEADER = libft.h
 SRCS = $(addprefix libft_functions/, $(LIBFT_FILES)) \
-get_next_line/get_next_line.c
-O_FILES = $(LIBFT_FILES:.c=.o) get_next_line.o
+get_next_line/get_next_line.c  $(addprefix ft_printf/srcs/, $(PRINTF_FILES))
+O_FILES = $(LIBFT_FILES:.c=.o) get_next_line.o  $(PRINTF_FILES:.c=.o)
 
 .PHONY: all clean fclean re
 
